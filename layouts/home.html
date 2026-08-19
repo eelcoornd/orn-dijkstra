@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ .Content }}
+  {{ with .Site.GetPage "/posts" }}
+    <h2>Latest</h2>
+    <ul>
+      {{ range first 5 .Pages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <small>{{ .Date.Format "2006-01-02" }}</small></li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}
